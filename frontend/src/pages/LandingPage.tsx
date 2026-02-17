@@ -1,128 +1,257 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BookOpen, Brain, TrendingUp, CheckCircle, ArrowRight, Star } from 'lucide-react';
+import { 
+  BookOpen, 
+  Brain, 
+  TrendingUp, 
+  CheckCircle, 
+  ArrowRight, 
+  Star, 
+  Sparkles,
+  Users,
+  Award,
+  Zap,
+  Shield,
+  Clock
+} from 'lucide-react';
+import { Button } from '../components/ui/Button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/Card';
+import { Badge } from '../components/ui/Badge';
 
 const LandingPage = () => {
     const navigate = useNavigate();
 
+    const features = [
+        {
+            icon: Brain,
+            title: 'AI Doubt Solver',
+            description: 'Get instant answers to your questions 24/7. Our AI tutor explains complex concepts simply and helps you learn faster.',
+            color: 'primary' as const,
+        },
+        {
+            icon: TrendingUp,
+            title: 'Performance Analytics',
+            description: 'Track your progress with detailed insights. Identify weak areas and compare your performance with batch averages.',
+            color: 'success' as const,
+        },
+        {
+            icon: CheckCircle,
+            title: 'Adaptive Exams',
+            description: 'Practice with exams that match real testing conditions. Auto-save functionality ensures you never lose progress.',
+            color: 'warning' as const,
+        },
+    ];
+
+    const stats = [
+        { label: 'Active Students', value: '10,000+', icon: Users },
+        { label: 'Success Rate', value: '95%', icon: Award },
+        { label: 'Expert Faculty', value: '500+', icon: Star },
+        { label: 'Study Hours', value: '1M+', icon: Clock },
+    ];
+
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-gradient-to-br from-neutral-50 via-white to-primary-50/30">
             {/* Navbar */}
-            <nav className="fixed w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between items-center h-16">
-                        <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center">
-                                <BookOpen className="w-5 h-5 text-white" />
+            <nav className="fixed w-full glass z-50 border-b border-white/20">
+                <div className="container-fluid">
+                    <div className="flex justify-between items-center h-20">
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-2xl gradient-primary flex items-center justify-center shadow-glow">
+                                <BookOpen className="w-6 h-6 text-white" />
                             </div>
-                            <span className="text-xl font-bold text-gray-900 tracking-tight">CoachingPlatform</span>
+                            <span className="text-2xl font-display font-bold text-neutral-900 tracking-tight">
+                                CoachingPlatform
+                            </span>
                         </div>
                         <div className="flex items-center gap-4">
-                            <button
+                            <Button
+                                variant="ghost"
                                 onClick={() => navigate('/login')}
-                                className="text-gray-600 hover:text-gray-900 font-medium px-3 py-2 transition-colors"
+                                className="text-neutral-600 hover:text-neutral-900"
                             >
                                 Sign In
-                            </button>
-                            <button
+                            </Button>
+                            <Button
                                 onClick={() => navigate('/login')}
-                                className="bg-indigo-600 text-white px-5 py-2.5 rounded-full font-medium hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-200 hover:shadow-indigo-300 transform hover:-translate-y-0.5"
+                                className="shadow-glow hover:shadow-glow-lg"
+                                icon={<Sparkles className="w-4 h-4" />}
                             >
                                 Get Started
-                            </button>
+                            </Button>
                         </div>
                     </div>
                 </div>
             </nav>
 
             {/* Hero Section */}
-            <section className="pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-                    <div className="absolute top-0 right-0 -mr-20 -mt-20 opacity-30">
-                        <div className="w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-                        <div className="w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000 mt-20 -ml-20"></div>
-                    </div>
+            <section className="section-padding pt-32 lg:pt-40 relative overflow-hidden">
+                {/* Background Elements */}
+                <div className="absolute inset-0 overflow-hidden">
+                    <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary-200/30 rounded-full mix-blend-multiply filter blur-3xl animate-float" />
+                    <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-secondary-200/30 rounded-full mix-blend-multiply filter blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+                    <div className="absolute bottom-1/4 right-1/3 w-96 h-96 bg-accent-200/30 rounded-full mix-blend-multiply filter blur-3xl animate-float" style={{ animationDelay: '4s' }} />
+                </div>
 
-                    <div className="text-center max-w-4xl mx-auto relative z-10">
-                        <div className="inline-flex items-center px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-sm font-semibold mb-6 border border-indigo-100">
+                <div className="container-fluid relative z-10">
+                    <div className="text-center max-w-5xl mx-auto animate-in">
+                        <Badge variant="primary" className="mb-8 animate-bounce-subtle">
                             <Star className="w-4 h-4 mr-2 fill-current" />
-                            Trusted by Top Educators
-                        </div>
-                        <h1 className="text-5xl lg:text-7xl font-extrabold text-gray-900 tracking-tight mb-8 leading-tight">
-                            Master Your Exams with <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">
+                            Trusted by Top Educators Nationwide
+                        </Badge>
+                        
+                        <h1 className="text-6xl lg:text-8xl font-display font-black text-neutral-900 tracking-tight mb-8 leading-tight">
+                            Master Your Exams with{' '}
+                            <span className="text-gradient-primary">
                                 AI-Powered Coaching
                             </span>
                         </h1>
-                        <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-                            Experience personalized learning with real-time AI doubt solving, comprehensive performance analytics, and adaptive mock exams.
+                        
+                        <p className="text-xl lg:text-2xl text-neutral-600 mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
+                            Experience personalized learning with real-time AI doubt solving, comprehensive performance analytics, and adaptive mock exams designed for MPSC/UPSC success.
                         </p>
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <button
+                        
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
+                            <Button
+                                size="xl"
                                 onClick={() => navigate('/login')}
-                                className="w-full sm:w-auto px-8 py-4 bg-indigo-600 text-white rounded-full font-bold text-lg hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-200 hover:shadow-2xl hover:shadow-indigo-300 transform hover:-translate-y-1"
+                                className="w-full sm:w-auto shadow-large hover:shadow-glow-lg"
+                                icon={<Zap className="w-5 h-5" />}
                             >
                                 Start Learning Now
-                            </button>
-                            <button className="w-full sm:w-auto px-8 py-4 bg-white text-gray-700 border border-gray-200 rounded-full font-bold text-lg hover:bg-gray-50 transition-all hover:border-gray-300">
+                            </Button>
+                            <Button
+                                variant="secondary"
+                                size="xl"
+                                className="w-full sm:w-auto"
+                            >
                                 View Demo
-                            </button>
+                                <ArrowRight className="w-5 h-5 ml-2" />
+                            </Button>
+                        </div>
+
+                        {/* Stats */}
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
+                            {stats.map((stat, index) => {
+                                const Icon = stat.icon;
+                                return (
+                                    <div key={index} className="text-center animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
+                                        <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-primary-100 text-primary-600 mb-3">
+                                            <Icon className="w-6 h-6" />
+                                        </div>
+                                        <div className="text-3xl font-bold text-neutral-900 mb-1">{stat.value}</div>
+                                        <div className="text-sm text-neutral-500 font-medium">{stat.label}</div>
+                                    </div>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Features Grid */}
-            <section className="py-20 bg-gray-50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <section className="section-padding bg-gradient-to-b from-white to-neutral-50">
+                <div className="container-fluid">
+                    <div className="text-center mb-16">
+                        <Badge variant="primary" className="mb-4">
+                            <Shield className="w-4 h-4 mr-2" />
+                            Powerful Features
+                        </Badge>
+                        <h2 className="text-4xl lg:text-5xl font-display font-bold text-neutral-900 mb-6">
+                            Everything you need to{' '}
+                            <span className="text-gradient-accent">succeed</span>
+                        </h2>
+                        <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
+                            Our comprehensive platform combines cutting-edge AI technology with proven educational methodologies.
+                        </p>
+                    </div>
+
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {/* Feature 1 */}
-                        <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                            <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
-                                <Brain className="w-6 h-6 text-blue-600" />
-                            </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-3">AI Doubt Solver</h3>
-                            <p className="text-gray-600 leading-relaxed">
-                                Get instant answers to your questions 24/7. Our AI tutor explains complex concepts simply and helps you learn faster.
-                            </p>
-                        </div>
+                        {features.map((feature, index) => {
+                            const Icon = feature.icon;
+                            const colorClasses = {
+                                primary: 'bg-primary-100 text-primary-600',
+                                success: 'bg-success-100 text-success-600',
+                                warning: 'bg-warning-100 text-warning-600',
+                            };
+                            
+                            return (
+                                <Card 
+                                    key={index} 
+                                    variant="hover" 
+                                    className="group animate-slide-up border-0 shadow-medium hover:shadow-large"
+                                    style={{ animationDelay: `${index * 0.2}s` }}
+                                >
+                                    <CardHeader>
+                                        <div className={`w-14 h-14 rounded-2xl ${colorClasses[feature.color]} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                                            <Icon className="w-7 h-7" />
+                                        </div>
+                                        <CardTitle className="text-xl">{feature.title}</CardTitle>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <CardDescription className="text-base leading-relaxed">
+                                            {feature.description}
+                                        </CardDescription>
+                                    </CardContent>
+                                </Card>
+                            );
+                        })}
+                    </div>
+                </div>
+            </section>
 
-                        {/* Feature 2 */}
-                        <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                            <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-6">
-                                <TrendingUp className="w-6 h-6 text-green-600" />
-                            </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-3">Performance Analytics</h3>
-                            <p className="text-gray-600 leading-relaxed">
-                                Track your progress with detailed insights. Identify weak areas and compare your performance with batch averages.
-                            </p>
-                        </div>
-
-                        {/* Feature 3 */}
-                        <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
-                                <CheckCircle className="w-6 h-6 text-purple-600" />
-                            </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-3">Adaptive Exams</h3>
-                            <p className="text-gray-600 leading-relaxed">
-                                Practice with exams that match real testing conditions. Auto-save functionality ensures you never lose progress.
-                            </p>
+            {/* CTA Section */}
+            <section className="section-padding bg-gradient-to-r from-primary-600 to-secondary-600 text-white relative overflow-hidden">
+                {/* Simple dot pattern background */}
+                <div className="absolute inset-0 opacity-20">
+                    <div className="absolute inset-0" style={{
+                        backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px)',
+                        backgroundSize: '20px 20px'
+                    }} />
+                </div>
+                
+                <div className="container-fluid relative z-10">
+                    <div className="text-center max-w-4xl mx-auto">
+                        <h2 className="text-4xl lg:text-5xl font-display font-bold mb-6">
+                            Ready to transform your learning journey?
+                        </h2>
+                        <p className="text-xl text-primary-100 mb-10 leading-relaxed">
+                            Join thousands of successful students who have achieved their dreams with our AI-powered coaching platform.
+                        </p>
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                            <Button
+                                size="xl"
+                                variant="secondary"
+                                onClick={() => navigate('/login')}
+                                className="w-full sm:w-auto bg-white text-primary-600 hover:bg-neutral-50"
+                            >
+                                Start Your Journey
+                                <ArrowRight className="w-5 h-5 ml-2" />
+                            </Button>
+                            <Button
+                                size="xl"
+                                variant="ghost"
+                                className="w-full sm:w-auto text-white border-white/20 hover:bg-white/10"
+                            >
+                                Schedule Demo
+                            </Button>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Footer */}
-            <footer className="bg-white py-12 border-t border-gray-200">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-                    <div className="flex items-center gap-2 mb-4 md:mb-0">
-                        <div className="w-6 h-6 rounded bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center">
-                            <BookOpen className="w-3 h-3 text-white" />
+            <footer className="bg-neutral-900 text-white py-16">
+                <div className="container-fluid">
+                    <div className="flex flex-col md:flex-row justify-between items-center">
+                        <div className="flex items-center gap-3 mb-6 md:mb-0">
+                            <div className="w-8 h-8 rounded-xl gradient-primary flex items-center justify-center">
+                                <BookOpen className="w-5 h-5 text-white" />
+                            </div>
+                            <span className="text-xl font-display font-bold">CoachingPlatform</span>
                         </div>
-                        <span className="text-lg font-bold text-gray-900">CoachingPlatform</span>
-                    </div>
-                    <div className="text-gray-500 text-sm">
-                        © 2024 CoachingPlatform. All rights reserved.
+                        <div className="text-neutral-400 text-sm">
+                            © 2024 CoachingPlatform. All rights reserved.
+                        </div>
                     </div>
                 </div>
             </footer>
